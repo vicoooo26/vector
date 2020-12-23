@@ -903,7 +903,7 @@ bench: ## Run benchmarks in /benches
 	${MAYBE_ENVIRONMENT_COPY_ARTIFACTS}
 
 .PHONY: bench-remap
-bench-remap: ## Run benchmarks in /benches
+bench-remap: ## Run remap benchmarks
 	${MAYBE_ENVIRONMENT_EXEC} cargo bench --no-default-features --features "remap-benches" --bench remap
 	${MAYBE_ENVIRONMENT_COPY_ARTIFACTS}
 
@@ -912,10 +912,15 @@ bench-wasm: $(WASM_MODULE_OUTPUTS)  ### Run WASM benches
 	${MAYBE_ENVIRONMENT_EXEC} cargo bench --no-default-features --features "wasm-benches" --bench wasm wasm
 	${MAYBE_ENVIRONMENT_COPY_ARTIFACTS}
 
+.PHONY: bench-metrics
+bench-metrics: ## Run metrics benches
+	${MAYBE_ENVIRONMENT_EXEC} cargo bench --no-default-features --features "metrics-benches"
+	${MAYBE_ENVIRONMENT_COPY_ARTIFACTS}
+
 .PHONY: bench-all
-bench-all: ### Run default and WASM benches
+bench-all: ### Run all benches
 bench-all: $(WASM_MODULE_OUTPUTS)
-	${MAYBE_ENVIRONMENT_EXEC} cargo bench --no-default-features --features "benches remap-benches wasm-benches"
+	${MAYBE_ENVIRONMENT_EXEC} cargo bench --no-default-features --features "benches remap-benches wasm-benches metrics-benches"
 	${MAYBE_ENVIRONMENT_COPY_ARTIFACTS}
 
 ##@ Checking
