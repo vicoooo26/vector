@@ -7236,6 +7236,7 @@ dependencies = [
  "colored",
  "criterion",
  "crossterm",
+ "dashmap",
  "db-key",
  "derivative 2.1.1",
  "derive_is_enum_variant",
