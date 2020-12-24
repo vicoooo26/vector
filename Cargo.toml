@@ -584,6 +584,11 @@ harness = false
 required-features = ["metrics-benches"]
 
 [[bench]]
+name = "metrics_no_tracing_layer"
+harness = false
+required-features = ["metrics-benches"]
+
+[[bench]]
 name = "metrics_off"
 harness = false
 required-features = ["metrics-benches"]
